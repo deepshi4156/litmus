@@ -51,6 +51,23 @@ Check out the <a href="https://github.com/litmuschaos/litmus/blob/master/ADOPTER
 
 (_Send a PR to the above page if you are using Litmus in your chaos engineering practice_)
 
+## Install Chaos Experiments
+Chaos experiments contain the actual chaos details. These experiments are installed on your cluster as Kubernetes CRs. The Chaos Experiments are grouped as Chaos Charts and are published on Chaos Hub.
+
+The generic chaos experiments such as pod-delete, container-kill,pod-network-latency are available under Generic Chaos Chart. This is the first chart you are recommended to install.
+
+kubectl apply -f https://hub.litmuschaos.io/api/chaos/1.8.2?file=charts/generic/experiments.yaml -n nginx
+
+Verify if the chaos experiments are installed.
+
+kubectl get chaosexperiments -n nginx
+
+## Run Chaos
+
+Apply the ChaosEngine manifest to trigger the experiment.
+
+kubectl apply -f chaosengine.yaml
+
 ## Things to Consider
 
 Some of the considerations that need to be made with Litmus (as a chaos framework), are broadly listed here. Many of these are already being worked on
